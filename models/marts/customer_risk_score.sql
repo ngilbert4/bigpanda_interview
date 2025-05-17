@@ -12,7 +12,7 @@ Assumptions made:
 
 Other data sets to improve the score:
 1. Having more granular events data would help us understand how customers are using the site. If they're only logging in once a week, but spending an hour in
-the product, it might warrent giving them a higher score vs a customer who is in there for a few minutes 3 times a week.
+the product, it might warrant giving them a higher score vs a customer who is in there for a few minutes 3 times a week.
 2. A dataset with results of an AI/ML analysis where customer sentiment is analyzed using the description of the support tickets. This helps understand if
 customers are filing tickets out of frustration vs passion for the product. Sentiment in a bug support ticket could vary drastically from a feature request
 ticket.
@@ -88,3 +88,4 @@ LEFT JOIN orders AS o
     ON c.customer_id = o.customer_id
 LEFT JOIN support AS s
     ON c.customer_id = s.customer_id
+WHERE c.end_date >= CURRENT_DATE
