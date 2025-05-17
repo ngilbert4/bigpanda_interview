@@ -1,0 +1,25 @@
+default:
+  target: dev
+  outputs:
+    prod:
+      type: snowflake
+      account: account_name
+      user: user_name
+      role: role_name
+      warehouse: warehouse_name
+      database: database_name
+      schema: prod_schema_name
+      threads: 5
+      connect_retries: 5
+      connect_timeout: 600
+    dev:
+      type: snowflake
+      account: account_name
+      user: user_name
+      role: role_name
+      warehouse: warehouse_name
+      database: database_name
+      schema: dev_schema_name
+      threads: 5
+      connect_retries: 5
+      connect_timeout: 600

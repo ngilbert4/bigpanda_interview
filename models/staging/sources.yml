@@ -1,0 +1,9 @@
+sources:
+  - name: bigpanda
+    database: database_name
+    schema: schema_name
+    tables:
+      - name: customers
+      - name: subscriptions
+      - name: login_events
+      - name: support_tickets

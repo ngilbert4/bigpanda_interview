@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: acquisition_date
+        tests:
+          - not_null
+  - name: stg_login_events
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: user_type
+        tests:
+          - accepted_values:
+            values: ['admin', 'advanced', 'standard']
+      - name: login_timestamp
+        tests:
+          - not_null
+  - name: stg_subscriptions
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: start_date
+        tests:
+          - not_null
+      - name: end_date
+        tests:
+          - not_null
+  - name: stg_support_tickets
+    columns:
+      - name: ticket_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['open', 'on-hold', 'closed']
+      - name: created_date
+        tests:
+          - not_null
+      - name: ticket_category
+        tests:
+          - not_null
+          - accepted_values:
+            values: ['bug', 'incident', 'question', 'feature_request']
