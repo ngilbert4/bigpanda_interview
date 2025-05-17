@@ -72,7 +72,7 @@ support AS (
             ELSE 3
         END AS support_score
     FROM {{ ref('unresolved_support_tickets') }}
-),
+)
 
 SELECT
     c.customer_id,
