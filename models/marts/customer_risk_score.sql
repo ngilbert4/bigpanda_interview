@@ -6,9 +6,8 @@ Overview: Total possible score of 5 points (highest risk customer), 4 different 
 Assumptions made:
 1. The subscriptions are of varying timeframes (e.g. annual not only option) and there is no free tier.
 2. Anyone listed in the customer table has purchased 1 or more paid subscriptions to be considered a customer.
-3. All customers who have an end_date > CURRENT_DATE are currently active and haven't cancelled their plan.
-4. The asks from the SQL questions section are actual KPIs used at this SaaS company.
-5. For simplicity and to give something to base the login score off, I decided the average login for the product is 2x per week.
+3. The asks from the SQL questions section are actual KPIs used at this SaaS company.
+4. For simplicity and to give something to base the login score off, I decided the average login for the product is 2x per week.
 
 Other data sets to improve the score:
 1. Having more granular events data would help us understand how customers are using the site. If they're only logging in once a week, but spending an hour in
@@ -88,4 +87,3 @@ LEFT JOIN orders AS o
     ON c.customer_id = o.customer_id
 LEFT JOIN support AS s
     ON c.customer_id = s.customer_id
-WHERE c.end_date >= CURRENT_DATE
